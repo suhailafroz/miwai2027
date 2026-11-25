@@ -62,7 +62,7 @@ window.addEventListener('scroll',syncFloatingControls,{passive:true});syncFloati
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let nodes=[],w=0,h=0,raf=0;
  const resize=()=>{
-   w=Math.max(1,host.clientWidth);h=Math.max(1,host.clientHeight);
+   w=window.innerWidth;h=window.innerHeight;
    const dpr=Math.min(devicePixelRatio||1,1.5);
    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
    const n=Math.min(420,Math.max(115,Math.round(w*h/10500)));
@@ -97,18 +97,11 @@ document.getElementById('contactForm')?.addEventListener('submit',e=>{
  const name=form.elements['visitorName'].value.trim(),email=form.elements['visitorEmail'].value.trim(),reason=form.elements['visitorReason'].value.trim();
  const subject=encodeURIComponent('MIWAI 2027 website enquiry from '+name);
  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nReason / Message:\n'+reason);
- window.location.href='mailto:conference@cvr.ac.in?subject='+subject+'&body='+body;
+ window.location.href='mailto:Raghava.m@cvr.ac.in?subject='+subject+'&body='+body;
  document.getElementById('contactStatus').textContent='Your email application should open with the message prepared. Please send it there to complete submission.';
 });
 const chatPanel=document.getElementById('chatPanel'),chatMessages=document.getElementById('chatMessages'),chatOptions=document.getElementById('chatOptions');
-const chatTopics={
- 'Conference dates':{answer:'MIWAI 2027 is tentatively scheduled for 11–13 November 2027 at CVR College of Engineering, Hyderabad.',link:'#dates'},
- 'Paper submission':{answer:'Authors can use EasyChair. The conference-specific submission link is yet to be announced.',link:'#submission'},
- 'Registration fees':{answer:'Faculty ₹12,000; research scholars ₹10,000; students ₹9,000; industry ₹15,000. USD estimates appear in the registration section.',link:'#registration'},
- 'Publication & indexing':{answer:'Earlier MIWAI proceedings appeared in Springer LNAI. MIWAI 2027 publication and indexing are subject to confirmation.',link:'#publication'},
- 'Venue & travel':{answer:'The proposed venue is CVR College of Engineering, Hyderabad, Telangana, India.',link:'#venue'},
- 'Contact organizers':{answer:'You can use the contact form or email conference@cvr.ac.in. Please verify the final conference contact address.',link:'#contact'}
-};
+const chatTopics={"Conference dates": {"answer": "16–18 September 2027, CVR College of Engineering, Hyderabad. See the detailed CFP schedule.", "link": "#dates"}, "Paper submission": {"answer": "Original AI research is invited. The conference-specific portal and guidelines are to be announced.", "link": "#submission"}, "Research tracks": {"answer": "12 tracks cover AI foundations, generative AI, agentic AI, reasoning, vision, NLP, trustworthy AI, systems, robotics, healthcare, industry and sustainability.", "link": "#tracks"}, "Keynote speakers": {"answer": "Prof. Salabh Bhatnagar and Prof. Swagatam Das are confirmed in the supplied conference document. Other invitations are in progress.", "link": "#speakers"}, "Publication": {"answer": "Springer LNAI proceedings approval is stated in the conference document. Publication remains subject to acceptance and publisher final approval; indexing is not guaranteed.", "link": "#publication"}, "Industry and startup collaboration": {"answer": "Special tracks, research partnerships, industry participation, startup showcases, workshops and sponsorship proposals are invited.", "link": "#collaboration"}, "Registration": {"answer": "See the CFP schedule for the author registration deadline. Fees and registration portal are not specified in the new conference document.", "link": "#dates"}, "Contact organisers": {"answer": "Contact Raghava M at Raghava.m@cvr.ac.in or use the enquiry form.", "link": "#contact"}};
 function chatShowOptions(){chatOptions.replaceChildren();Object.keys(chatTopics).forEach(topic=>{const b=document.createElement('button');b.type='button';b.textContent=topic;b.addEventListener('click',()=>{const entry=chatTopics[topic];const question=document.createElement('div');
 question.className='chat-bubble question';
 question.textContent=topic;
@@ -117,3 +110,5 @@ const msg=document.createElement('div');msg.className='chat-bubble answer';msg.t
 document.getElementById('chatLaunch')?.addEventListener('click',()=>{chatPanel.classList.toggle('open');if(chatPanel.classList.contains('open'))chatShowOptions()});
 document.getElementById('chatClose')?.addEventListener('click',()=>chatPanel.classList.remove('open'));
 
+
+const search=document.getElementById("trackSearch");search.addEventListener("input",()=>{let n=0;document.querySelectorAll(".track-grid article").forEach(c=>{const yes=c.textContent.toLowerCase().includes(search.value.trim().toLowerCase());c.hidden=!yes;if(yes)n++;});document.getElementById("trackCount").textContent=n+" research tracks";});

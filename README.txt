@@ -1,12 +1,3 @@
-MIWAI 2027 — Local Website
-Extract and open index.html in Chrome or Edge.
-All slideshow images, CVR gallery images, country flags, Bootstrap, CSS and JS are stored locally.
+MIWAI 2027 redesigned from MIWAI 2027.docx. Open index.html after extraction. Local images, flags, Bootstrap and scripts included. Detailed CFP schedule used; general dates section conflicts and requires confirmation. Registration fees and submission portal omitted pending confirmation. Contact form prepares an email to the listed contact Raghava M; user must send it. Photo licensing should be confirmed before public deployment.
 
-Slideshow: CVR College, HITEC City Cyber Towers, Charminar, Telangana Secretariat,
-Falaknuma Palace and Golconda Fort. The five Hyderabad photos were provided by the user.
-
-The contact form opens the visitor's mail app; it does not send messages by itself.
-External destination links and the embedded map may require internet access.
-
-Image clarity: original user-supplied photos contrast/color/sharpened locally; no generative replacement. CSS blur removed.
-Chatbot: selected question is displayed above its answer.
+Speaker photos: replace individual JPG files in assets/images/speakers/ with the corresponding speaker photographs, keeping filenames unchanged. Square portraits are recommended. Map requires internet access. Address verified against https://csedept.onrender.com/contact.html.
