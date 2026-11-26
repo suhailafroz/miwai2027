@@ -262,3 +262,42 @@ body{background:#071323!important;color:var(--ink)!important;font-family:system-
 #speakers .speaker-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 #speakers article{text-align:center}
 .venue-map{margin-top:28px}.venue-map-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:16px}.venue-map address{font-style:normal;margin:0}.venue-map iframe{display:block;width:100%;height:380px;border:1px solid #365c79;border-radius:14px;background:#102c46;margin-bottom:12px}@media(max-width:600px){.venue-map iframe{height:300px}}
+
+/* Dual institutional branding, responsive navigation and countdown */
+.navbar .container{max-width:1800px;gap:12px;flex-wrap:wrap}
+.navbar .miwai-logo{margin:0;display:flex;align-items:center;background:#f5f8fc;border-radius:8px;padding:5px 9px;flex-shrink:0}
+.miwai-logo img{width:112px;height:auto;display:block}
+.cvr-nav-logo{display:block;flex-shrink:0;margin-left:auto}
+.cvr-nav-logo img{display:block;width:clamp(170px,17vw,270px);height:auto}
+.navbar .navbar-nav{gap:0!important;margin:auto!important;justify-content:center}
+.navbar .nav-link{padding-inline:6px!important;font-size:.77rem}
+@media(max-width:1399.98px){.navbar .miwai-logo{order:0}.navbar .cvr-nav-logo{order:1}.navbar .navbar-toggler{order:2}.navbar .navbar-collapse{order:3;flex-basis:100%}.navbar .navbar-nav{max-height:65vh;overflow:auto}}
+@media(max-width:480px){.navbar .container{gap:7px}.miwai-logo img{width:78px}.cvr-nav-logo img{width:clamp(130px,46vw,205px)}.navbar .miwai-logo{padding:4px}.navbar-toggler{padding:4px 6px}}
+.conference-countdown{margin-top:26px;width:max-content;max-width:100%;padding:14px 18px;background:#071727d9;border:1px solid #65ddff65;border-radius:16px;backdrop-filter:blur(8px)}
+.countdown-label{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:#b8e9ff;font-weight:700;margin-bottom:10px}
+.countdown-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.countdown-unit{min-width:0;text-align:center;background:#16354d;border:1px solid #42718e;border-radius:10px;padding:8px 14px}
+.countdown-unit strong{display:block;font-size:clamp(1.35rem,3vw,2.1rem);line-height:1.2;color:#65ddff;font-variant-numeric:tabular-nums}
+.countdown-unit span{font-size:.7rem;color:#d5e5f5}
+@media(max-width:480px){.conference-countdown{padding:10px;width:100%}.countdown-grid{gap:5px}.countdown-unit{padding:7px 3px}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.neo-card,.flag-item,.publication-logos img,.stat-strip div{transition:translate .25s ease,box-shadow .25s ease,border-color .25s ease,opacity .55s ease,transform .55s ease}.neo-card:hover,.flag-item:hover,.publication-logos img:hover,.stat-strip div:hover{translate:0 -5px;box-shadow:0 14px 32px #0005;border-color:#65ddff88}}
+
+/* Compact viewport-aware hero and transparent branding/countdown */
+.navbar .miwai-logo{background:transparent!important;border:0;box-shadow:none;padding:0 5px;border-radius:0}
+.miwai-logo img{filter:drop-shadow(0 0 1px #e0f1ff) drop-shadow(0 0 2px #e0f1ff88)}
+#home.hero{min-height:100vh;min-height:100svh;padding:calc(var(--nav-height,76px) + 18px) 0 48px;box-sizing:border-box}
+#home .hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px, .55fr);gap:clamp(20px,4vw,64px);align-items:center}
+#home h1{font-size:clamp(3rem,7vw,6.5rem);margin:12px 0 8px}
+#home h2{font-size:clamp(1.2rem,2.5vw,2.2rem)}
+#home .lead{margin-top:14px!important;font-size:clamp(1rem,1.5vw,1.25rem)}
+#home .conference-countdown{justify-self:end;width:100%;max-width:430px;margin:0;background:transparent;border:0;backdrop-filter:none;padding:8px 0;text-align:center;text-shadow:0 2px 7px #000,0 0 12px #0009}
+#home .countdown-unit{background:transparent;border:1px solid #d4efff80;padding:9px 4px;box-shadow:none}
+#home .countdown-unit strong{color:#fff;font-size:clamp(1.5rem,3vw,2.6rem)}
+#home .countdown-label{color:#fff}
+#home .landmark-label{bottom:12px;right:clamp(12px,3vw,40px);background:#061426d9;color:#fff;font-size:.85rem;z-index:3}
+#home .hero-photo-reel{z-index:1} #home .hero-photo-shade{z-index:1}
+#home .hero-photo-slide .landmark-label{z-index:4}
+.publication-logos .springer-link{display:inline-flex;align-items:center;border-radius:12px;outline-offset:4px}
+.publication-logos .springer-link img{width:230px;height:100px;object-fit:contain;padding:8px;background:#fff}
+@media(max-width:991px){#home .hero-layout{grid-template-columns:1fr;gap:12px}#home .conference-countdown{justify-self:end;max-width:360px}#home h1{font-size:clamp(2.6rem,8vw,4.5rem)}#home .hero-copy .mb-4{margin-bottom:12px!important}#home .hero-copy .gap-3{gap:7px!important}#home .hero-copy .btn{padding:7px 12px;font-size:.85rem}}
+@media(max-height:700px) and (min-width:992px){#home h1{font-size:clamp(2.8rem,6vw,4.5rem)}#home h2{font-size:1.45rem}#home .hero-copy .mb-4{margin-bottom:12px!important}#home .hero-copy .btn{padding:8px 13px}}

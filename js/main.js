@@ -18,6 +18,7 @@ const fallback=document.createElement('div');
 fallback.className='hero-illustrated-fallback';
 fallback.innerHTML='<div class="hero-skyline" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>';
 heroReel.appendChild(fallback);
+const heroCaption=document.createElement('span');heroCaption.className='landmark-label';document.getElementById('home').appendChild(heroCaption);heroCaption.hidden=true;
 let currentHero=-1;
 function showHero(index){
  const available=heroSlides.map((s,i)=>s?i:-1).filter(i=>i>=0);
@@ -26,7 +27,7 @@ function showHero(index){
  heroSlides.forEach(s=>s?.classList.remove('active'));
  currentHero=next;
  heroSlides[currentHero].classList.add('active');
- fallback.style.opacity='0';
+ fallback.style.opacity='0';heroCaption.textContent=landmarks[currentHero][0];heroCaption.hidden=false;
 }
 landmarks.forEach(([name,url],i)=>{
  const img=new Image();img.decoding='async';
@@ -34,7 +35,7 @@ landmarks.forEach(([name,url],i)=>{
    if(img.naturalWidth<450)return;
    const slide=document.createElement('div');slide.className='hero-photo-slide';
    img.alt=name;slide.appendChild(img);
-   const label=document.createElement('span');label.className='landmark-label';label.textContent=name;slide.appendChild(label);
+
    heroReel.appendChild(slide);heroSlides[i]=slide;
    if(currentHero===-1)showHero(i);
  };
@@ -112,3 +113,8 @@ document.getElementById('chatClose')?.addEventListener('click',()=>chatPanel.cla
 
 
 const search=document.getElementById("trackSearch");search.addEventListener("input",()=>{let n=0;document.querySelectorAll(".track-grid article").forEach(c=>{const yes=c.textContent.toLowerCase().includes(search.value.trim().toLowerCase());c.hidden=!yes;if(yes)n++;});document.getElementById("trackCount").textContent=n+" research tracks";});
+
+// Countdown to the first conference day, midnight Indian Standard Time.
+(()=>{const target=Date.parse('2027-09-16T00:00:00+05:30');const end=Date.parse('2027-09-19T00:00:00+05:30');const label=document.getElementById('countdownLabel');const units=['days','hours','minutes','seconds'].map(k=>document.getElementById('count-'+k));function tick(){const now=Date.now();let seconds=Math.max(0,Math.floor((target-now)/1000));const values=[Math.floor(seconds/86400),Math.floor(seconds/3600)%24,Math.floor(seconds/60)%60,seconds%60];units.forEach((el,i)=>el.textContent=String(values[i]).padStart(2,'0'));if(now>=target)label.textContent=now<end?'MIWAI 2027 is underway':'MIWAI 2027 has concluded';}tick();setInterval(tick,1000);})();
+
+(()=>{const nav=document.querySelector('.navbar');const update=()=>document.documentElement.style.setProperty('--nav-height',nav.offsetHeight+'px');update();if('ResizeObserver' in window)new ResizeObserver(update).observe(nav);window.addEventListener('resize',update);})();
