@@ -315,3 +315,48 @@ body{background:#071323!important;color:var(--ink)!important;font-family:system-
 #speakers img[src$="manish-gupta.png"]{object-position:50% 38%}
 #speakers img[src$="mitesh-khapra.png"]{object-position:50% 30%}
 #speakers img[src$="deva-priyakumar.png"]{object-position:50% 25%}
+
+/* Refined card elevation: soft layered shadow and restrained cyan edge light. */
+@media (hover: hover) {
+  .neo-card:hover, .card-ai:hover, .flag-item:hover, .publication-logos img:hover {
+    box-shadow: 0 5px 12px rgba(0, 7, 20, .22),
+                0 18px 36px -10px rgba(0, 7, 20, .65),
+                0 0 20px -7px rgba(101, 221, 255, .24) !important;
+    border-color: rgba(101, 221, 255, .48) !important;
+  }
+  .stat-strip div:hover {
+    box-shadow: inset 0 0 20px rgba(101, 221, 255, .07);
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .neo-card, .card-ai, .flag-item, .publication-logos img {
+    transition: translate .28s ease, box-shadow .32s ease, border-color .32s ease, opacity .55s ease, transform .55s ease;
+  }
+}
+
+/* Visible card elevation on dark backgrounds — final override. */
+#postHeroContent .neo-grid, #postHeroContent .flags-grid,
+#postHeroContent .publication-logos { overflow: visible; }
+#postHeroContent :is(.neo-card,.card-ai,.flag-item,.publication-logos img) {
+  position: relative;
+  transition: box-shadow .28s ease, border-color .28s ease, translate .28s ease, opacity .55s ease, transform .55s ease !important;
+}
+@media (hover: hover) {
+  #postHeroContent :is(.neo-card,.card-ai,.flag-item,.publication-logos img):hover {
+    z-index: 5;
+    border-color: #8ae5ff !important;
+    box-shadow: 0 0 0 1px rgba(138,229,255,.68),
+                0 0 18px 3px rgba(65,184,255,.34),
+                0 12px 32px 3px rgba(34,120,205,.28),
+                0 20px 36px -8px rgba(0,0,0,.85) !important;
+  }
+  #postHeroContent .stat-strip div:hover {
+    box-shadow: inset 0 0 24px rgba(101,221,255,.28), inset 0 0 0 1px #65ddff !important;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  #postHeroContent :is(.neo-card,.card-ai,.flag-item,.publication-logos img):hover { translate: 0 -6px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #postHeroContent :is(.neo-card,.card-ai,.flag-item,.publication-logos img) { transition: none !important; translate: none !important; }
+}
