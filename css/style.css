@@ -360,3 +360,13 @@ body{background:#071323!important;color:var(--ink)!important;font-family:system-
 @media (prefers-reduced-motion: reduce) {
   #postHeroContent :is(.neo-card,.card-ai,.flag-item,.publication-logos img) { transition: none !important; translate: none !important; }
 }
+
+/* Publisher branding on the hero title row; chatbot available from first paint. */
+#home .hero-brand-row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;min-width:0}
+#home .hero-brand-title{min-width:0;text-align:left}
+#home .hero-publisher-logos{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-shrink:0}
+#home .hero-publisher-logos a{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:9px;padding:5px;box-shadow:0 5px 18px #0005}
+#home .hero-publisher-logos img{display:block;width:clamp(100px,12vw,170px);height:clamp(40px,5vw,68px);object-fit:contain}
+#home .hero-layout{row-gap:12px}
+.chat-launch{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important}
+@media(max-width:767px){#home .hero-brand-row{flex-wrap:wrap;gap:8px}#home .hero-publisher-logos{margin-left:auto}#home .hero-publisher-logos img{width:105px;height:38px}#home .hero-brand-title h1{margin:5px 0}#home .hero-layout{row-gap:8px}}
